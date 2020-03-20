@@ -17,18 +17,15 @@ io.on('connection', (socket)=> {
       socket.broadcast.emit('on-broadcast-score', data)
     })
     socket.on('join-game', player => {
-      console.log('join-game', player)
       // ? player join
       players.push(player)
       io.sockets.emit('on-player-joined', players)
     })
 
     socket.on('start-game', _=> {
-      console.log('game-start')
       socket.broadcast.emit('on-start-game')
     })
     socket.on('restart-game', _=> {
-      console.log('game-restart')
       players = []
       socket.broadcast.emit('on-restart-game')
     })
