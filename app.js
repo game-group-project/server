@@ -20,7 +20,7 @@ io.on('connection', (socket)=> {
       // console.log('join-game', player)
       players.push(player)
       // ? player join
-      socket.broadcast.emit('on-player-joined', players)
+      io.emit('on-player-joined', players)
     })
 
     socket.on('start-game', _=> {
