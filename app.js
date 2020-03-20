@@ -25,7 +25,12 @@ io.on('connection', (socket)=> {
 
     socket.on('start-game', _=> {
       console.log('game-start', )
-      socket.broadcast.emit('on-start-game', )
+      socket.broadcast.emit('on-start-game')
+    })
+
+    socket.on('restart-game', _=> {
+      console.log('restart')
+      socket.broadcast.emit('on-start-game')
     })
 
     // ! User Disconnect
