@@ -13,7 +13,6 @@ io.on('connection', (socket)=> {
     console.log('a User Connected')
     // ? score
     socket.on('send-score', data => {
-      console.log('send-score', data)
       // ? broadcast-score
       socket.broadcast.emit('on-broadcast-score', data)
     })
