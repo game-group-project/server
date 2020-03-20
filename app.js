@@ -5,6 +5,7 @@ const app = express()
 const http = require('http').createServer(app)
 const io = require('socket.io')(http)
 const PORT = process.env.PORT
+const players = []
 
 io.on('connection', (socket)=> {
     // ! User Connect
@@ -16,12 +17,13 @@ io.on('connection', (socket)=> {
       socket.broadcast.emit('on-broadcast-score', data)
     })
     socket.on('join-game', player => {
-      console.log('join-game', player)
+      // console.log('join-game', player)
+      players.push(player)
       // ? player join
-      socket.broadcast.emit('on-player-joined', player)
+      socket.broadcast.emit('on-player-joined', players)
     })
 
-    socket.on('on-start-game', _=> {
+    socket.on('start-game', _=> {
       console.log('game-start', )
       socket.broadcast.emit('on-start-game', )
     })
